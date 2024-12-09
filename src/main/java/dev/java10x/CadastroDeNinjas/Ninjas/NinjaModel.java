@@ -1,6 +1,9 @@
-package dev.java10x.CadastroDeNinjas;
+package dev.java10x.CadastroDeNinjas.Ninjas;
 
+import dev.java10x.CadastroDeNinjas.Missoes.MissoesModel;
 import jakarta.persistence.*;
+
+import java.util.List;
 
 @Entity // usado para criar uma entidade no BD, criar uma tabela com nome, email e idade
 @Table(name = "tb_cadastro")
@@ -12,6 +15,10 @@ public class NinjaModel {
     private String nome;
     private String email;
     private int idade;
+
+    @ManyToOne // Muitos ninjas podem ter uma missao
+    @JoinColumn(name = "missoes_id")
+    private MissoesModel missoes;
 
     public NinjaModel() {
     }
@@ -49,7 +56,6 @@ public class NinjaModel {
     public long getId() {
         return id;
     }
-
     public void setId(long id) {
         this.id = id;
     }
