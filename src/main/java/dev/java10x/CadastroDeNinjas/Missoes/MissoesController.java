@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("missoes") // tudo que for colocado pode ser mapeado nas apis // Cria um caminho "missoes" para depois poder (criar)
 public class MissoesController {
 
-    @PostMapping("/criar") //O usuario envia os dados
+    @PostMapping("/cadastrar") //O usuario envia os dados
     public String criarMissao(){
         return "Criar missao";
     }
