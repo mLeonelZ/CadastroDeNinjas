@@ -32,8 +32,8 @@ public class NinjaModel {
     @Column(name = "img_url")
     private String imgUrl;
 
-    @Column(name = "rank2")
-    private String rank2;
+    @Column(name = "rank")
+    private String rank;
 
     @ManyToOne // Muitos ninjas podem ter uma missao
     @JoinColumn(name = "missoes_id")
