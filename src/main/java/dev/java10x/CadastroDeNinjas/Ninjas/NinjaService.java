@@ -11,11 +11,13 @@ import java.util.Optional;
 public class NinjaService {
 
     //@Autowired // Inicializa os construtores
-    private NinjaRepository ninjaRepository; // conectar ao repositório // INJEÇAO DE DEPENDENCIA
+    private final NinjaRepository ninjaRepository; // conectar ao repositório // INJEÇAO DE DEPENDENCIA
+    NinjaMapper ninjaMapper = new NinjaMapper();
 
     // Boa pratica injetar com o construtor
-    public NinjaService(NinjaRepository ninjaRepository) {
+    public NinjaService(NinjaRepository ninjaRepository, NinjaMapper ninjaMapper) {
         this.ninjaRepository = ninjaRepository;
+        this.ninjaMapper = ninjaMapper;
     }
 
     // Lógica para listar todos os ninjas:
@@ -30,8 +32,9 @@ public class NinjaService {
     }
 
     // Criar novo ninja
-    public NinjaModel criarNinja(NinjaModel ninja){
-        return ninjaRepository.save(ninja);
+    public NinjaDTO criarNinja(NinjaDTO ninjaDTO){
+        NinjaModel ninja = ninjaMapper.map(ninjaDTO);
+        return ninjaMapper.map(ninjaRepository.save(ninja));
     }
 
     // Deletar Ninja TEM QUE SER VOID
