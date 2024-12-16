@@ -13,7 +13,7 @@ import java.util.stream.Collectors;
 public class NinjaController {
 
     // Injetando a dependencia do service
-    private NinjaService ninjaService;
+    private final NinjaService ninjaService;
 
     public NinjaController(NinjaService ninjaService) {
         this.ninjaService = ninjaService;
